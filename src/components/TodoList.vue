@@ -1,17 +1,36 @@
 <template>
 <div>
-    <input type="text" class="todo-input" placeholder="What needs to be done">
-    Todo List goes here
+    <input type="text" class="todo-input" placeholder="What needs to be done" v-model="newTodo" @keyup.enter="addTodo">
+    <div v-for="todo in todos" :key="todo.id" class="todo-item">
+    {{ todo.title }}
+    </div>
 </div>
 </template>
 
 <script>
 export default {
   name: 'todo-list',
+  // data
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      newTodo: '',
+      todos:[
+       {
+          'id': 1,
+          'title': 'Finish Vue Screencast',
+          'completed': false,
+       },
+           {
+          'id': 2,
+          'title': 'Take over the world',
+          'completed': false,
+       },
+      ]
     }
+  },
+  // methods
+  methods: {
+
   }
 }
 </script>
