@@ -30,7 +30,9 @@ export default {
   },
   // methods
   methods: {
-
+     addTodo() {
+       alert('adding')
+     }
   }
 }
 </script>
