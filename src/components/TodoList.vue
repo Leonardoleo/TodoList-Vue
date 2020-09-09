@@ -14,6 +14,7 @@ export default {
   data () {
     return {
       newTodo: '',
+      idForTodo: 3,
       todos:[
        {
           'id': 1,
@@ -31,7 +32,14 @@ export default {
   // methods
   methods: {
      addTodo() {
-       alert('adding')
+       this.todos.push({
+         id: this.idForTodo,
+         title: this.newTodo,
+         completed: false,
+       })
+
+       this.newTodo = ''
+       this.idForTodo++
      }
   }
 }
