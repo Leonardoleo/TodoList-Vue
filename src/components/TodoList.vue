@@ -33,7 +33,7 @@ export default {
   methods: {
      addTodo() {
 
-       if (this.newTodo.trim() == 0) {
+       if (this.newTodo.trim().length == 0) {
           return
        }
        
