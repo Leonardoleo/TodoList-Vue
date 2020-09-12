@@ -2,8 +2,9 @@
 <div>
     <input type="text" class="todo-input" placeholder="What needs to be done" v-model="newTodo" @keyup.enter="addTodo">
     <div v-for="(todo, index) in todos" :key="todo.id" class="todo-item">
-      <div>
-        {{ todo.title }}
+      <div class="todo-item-left">
+      <div v-if="!todo.editing" @dblclick="editTodo(todo)" class="todo-item-label">{{ todo.title }}</div>
+        <input v-else class="todo-item-edit" type="text" v-model="todo.title" @blur="doneEdit(todo)" @keyup.enter="doneEdit(todo)" v-focus>        
       </div>
       <div class="remove-item" @click="removeTodo(index)">
       &times;
@@ -25,15 +26,26 @@ export default {
           'id': 1,
           'title': 'Finish Vue Screencast',
           'completed': false,
-       },
+          'editing': false,
+          },
            {
           'id': 2,
-          'title': 'Take over the world',
+          'title': 'Take over world',
           'completed': false,
+          'editing': false,
        },
       ]
     }
   },
+  directives: {
+  focus: {
+    // directive definition
+    inserted: function (el) {
+      el.focus()
+    }
+  }
+},
+  
   // methods
   methods: {
      addTodo() {
@@ -50,6 +62,13 @@ export default {
 
        this.newTodo = ''
        this.idForTodo++
+     },
+
+     editTodo(todo) {
+       todo.editing = true
+     },
+     doneEdit(todo) {
+       todo.editing = false  
      },
 
      removeTodo(index) {
@@ -86,6 +105,27 @@ export default {
        
        input:hover {
        color: black;
+     }
+
+     .todo-item-left {
+       display: flex;
+       align-items: center;
+     }
+
+     .todo-item-label {
+       padding:10px;
+       border: 1px solid white;
+       margin-left: 12px;
+     }
+
+     .todo-item-edit {
+       font-size: 24px;
+       color: #2c3e50;
+       margin-left: 12px;
+       width: 100%;
+       padding: 10px;
+       border: 1px solid #ccc;
+       font-family: 'Avenir', Helvetica, Arial, Helvetica, sans-serif;
      }
 
 </style>
