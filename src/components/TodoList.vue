@@ -11,6 +11,11 @@
       &times;
       </div>
     </div>
+
+    <div class="extra-container">
+       <div><label><input type="checkbox">Check All</label></div>
+       <div>{{ remaining }} items left</div>
+    </div>
 </div>
 </template>
 
@@ -38,6 +43,13 @@ export default {
        },
       ]
     }
+  },
+
+  //computed
+  computed: {
+   remaining() {
+     return this.todos.filter(todo => !todo.completed).length 
+   } 
   },
   directives: {
   focus: {
@@ -148,4 +160,31 @@ export default {
       color: grey;
     }
 
+    .extra-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 16px;
+      border-top: 1px solid lightgray;
+      padding-top: 14px;
+      margin-bottom: 14px;
+    }
+
+    button {
+      font-size: 14px;
+      background-color: white;
+      appearance: none;
+    }
+
+    input:hover {
+      background: lightgreen;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+.active {
+  background: lightgreen;
+}
 </style>
