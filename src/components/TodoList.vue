@@ -70,7 +70,7 @@ export default {
    },
    
    anyRemaining() {
-     return this.remaining = 0
+     return this.remaining != 0
    },
    todosFiltered() {
      if (this.filter == 'all') {
