@@ -1,5 +1,7 @@
 # todolist
 
+This repo is using for branch protection
+
 > A Vue.js project
 
 ## Build Setup
