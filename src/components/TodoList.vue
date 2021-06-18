@@ -15,7 +15,7 @@
     </transition-group>
 
     <div class="extra-container">
-       <div><label><input type="checkbox" :checked="!anyRemaining" @change="checkAllTodos">Check All</label></div>
+       <div><label><input type="checkbox" :checked="!anyRemaining" @change="checkAllTodos">Checks All</label></div>
        <div>{{ remaining }} items left</div>
     </div>
 
